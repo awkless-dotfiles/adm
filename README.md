@@ -25,5 +25,23 @@ checkout][sparse-checkout] feature. However, the poorly written structure of the
 dotfile configurations.  Thus, `adm` exists as a replacement for the `dm`
 script. Plus, `adm` acts as my first-ever Rust coding project!
 
+## Installation
+
+You will need the following pieces of software:
+
+1. Git [>= 2.20.0].
+1. Rust [>= 1.56.0].
+
+Clone this repository and use cargo like so:
+
+```
+# git clone https://github.com/awkless-dotfiles/adm.git
+# cd adm
+# cargo build
+# cargo install
+```
+
+Enjoy!
+
 [durdn-article]: https://www.atlassian.com/git/tutorials/dotfiles
 [sparse-checkout]: https://git-scm.com/docs/git-sparse-checkout
