@@ -127,6 +127,11 @@ The `adm` project is open to the following forms of contribution:
 Refer to the [contribution guidelines][contributing] for more information about
 contributing to the `adm` project.
 
+## License
+
+The `adm` project is uses the MIT license. See [copy][mit] for more details.
+
 [durdn-article]: https://www.atlassian.com/git/tutorials/dotfiles
 [sparse-checkout]: https://git-scm.com/docs/git-sparse-checkout
 [contributing]: CONTRIBUTING.md
+[mit]: LICENSE.txt
