@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: admr
+Upstream-Contact: Jason Pena <jasonpena@awkless.com>
+Source: https://github.com/awkless-dotfiles/admr
+
+Files: Cargo.lock
+Copyright: 2024 Jason Pena <jasonpena@awkless.com>
+License: MIT
