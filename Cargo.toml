@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2024 Jason Pena <jasonpena@awkless.com>
+# SPDX-License-Identifier: MIT
+
+[package]
+name = "adm"
+description = "Awklesses' dotfile manager"
+repository = "https://github.com/awkless-dotfiles/adm"
+categories = ["command-line-utilities", "config"]
+keywords = ["dotfiles"]
+version = "0.1.0"
+edition = "2021"
+authors = ["Awkless"]
+license = "MIT"
+rust-version = "1.56"
+
+[dependencies]
+anyhow = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+toml = "0.5"
