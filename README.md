@@ -114,6 +114,19 @@ See the provided man page for more information about using the various
 features `adm` offers, including additional information about writing your `adm`
 TOML configuration file.
 
+## Contributing
+
+The `adm` project is open to the following forms of contribution:
+
+1. Improvements or additions to production code.
+1. Improvements or additions to test code.
+1. Improvements or additions to build system.
+1. Improvements or additions to documentation.
+1. Improvements or additions to CI/CD pipelines.
+
+Refer to the [contribution guidelines][contributing] for more information about
+contributing to the `adm` project.
+
 [durdn-article]: https://www.atlassian.com/git/tutorials/dotfiles
 [sparse-checkout]: https://git-scm.com/docs/git-sparse-checkout
 [contributing]: CONTRIBUTING.md
