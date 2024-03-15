@@ -11,7 +11,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Awkless"]
 license = "MIT"
-rust-version = "1.56"
+rust-version = "1.63"
 
 [dependencies]
 anyhow = "1.0"
