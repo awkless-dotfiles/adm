@@ -64,6 +64,60 @@ pub struct Git {
     work_tree: PathBuf,
 }
 
+/// Git VCS manipulation API.
+///
+/// Simple API to manipulate the Git VCS command-line tool that the user (should) have installed on
+/// their system.
+///
+/// # Since
+///
+/// 0.2.0
+impl Git {
+    /// Constructor to create new Git VCS instance.
+    ///
+    /// # Preconditions
+    ///
+    /// 1. Valid remote URL.
+    /// 2. Valid path to git directory.
+    /// 3. Valid path to working tree.
+    ///
+    /// # Postconditions
+    ///
+    /// 1. Valid Git VCS instance given.
+    ///
+    /// # Arguments
+    ///
+    /// * `remote`(in) - URL to remote repository.
+    /// * `git_dir`(in) - Path to git directory (.git).
+    /// * `work_tree`(in) - Path to working tree.
+    ///
+    /// # Returns
+    ///
+    /// * Valid Git VCS instance to use.
+    ///
+    /// # Since
+    ///
+    /// 0.2.0
+    pub fn new(remote: &str, git_dir: &Path, work_tree: &Path) -> Result<Git, VcsError> {
+        let gitout = execute("git", &["ls-remote", remote])?;
+        debug!("Results of verifying remote url - {}", gitout);
+
+        if !git_dir.is_dir() {
+            return Err(VcsError::BadPathError { path: git_dir.to_path_buf() });
+        }
+
+        if !work_tree.is_dir() {
+            return Err(VcsError::BadPathError { path: work_tree.to_path_buf() });
+        }
+
+        Ok(Git {
+            remote: remote.to_string(),
+            git_dir: git_dir.to_path_buf(),
+            work_tree: work_tree.to_path_buf(),
+        })
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
