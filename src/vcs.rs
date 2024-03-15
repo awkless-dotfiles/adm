@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: MIT
 
 use crate::error::VcsError;
+use log::debug;
 use std::path::{Path, PathBuf};
 use std::process::Command;
-use log::debug;
 
 /// Run a shell command from user's system.
 ///
@@ -19,8 +19,8 @@ use log::debug;
 ///
 /// # Arguments
 ///
-/// * `cmd`[in] - Name of shell command to execute.
-/// * `args`[in] - Arguments to pass to shell command.
+/// * `cmd`(in) - Name of shell command to execute.
+/// * `args`(in) - Arguments to pass to shell command.
 ///
 /// # Returns
 ///
