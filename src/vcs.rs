@@ -52,6 +52,18 @@ fn execute(cmd: &str, args: &[&str]) -> Result<String, VcsError> {
     Ok(outmsg)
 }
 
+/// Git VCS API.
+pub struct Git {
+    /// URL to remote repository to push and pull changes too and from.
+    remote: String,
+
+    /// Path to git directory (.git/).
+    git_dir: PathBuf,
+
+    /// Path to working tree to stage changes from.
+    work_tree: PathBuf,
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
