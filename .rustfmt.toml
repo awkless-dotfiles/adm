@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2024 Jason Pena <jasonpena@awkless.com>
 # SPDX-License-Identifier: MIT
 
-max_width = 80
+max_width = 100
 use_small_heuristics = "Max"
