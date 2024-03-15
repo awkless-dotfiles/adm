@@ -11,4 +11,8 @@ pub enum VcsError {
     /// Shell command executed but still failed for whatever reason.
     #[error("Command '{cmd}' executed but still failed - {stderr}")]
     ShellCmdError { cmd: String, stderr: String },
+
+    /// Shell command output contains bad UTF8 formatting.
+    #[error("Failed to retrieve '{cmd}' output - {errsrc}")]
+    ShellCmdUtf8Error { cmd: String, errsrc: std::string::FromUtf8Error },
 }
