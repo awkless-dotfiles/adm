@@ -140,10 +140,10 @@ mod tests {
         let badcmd = execute("deadbeef", &["--bad"]);
         assert!(matches!(badcmd, Err(VcsError::ShellCmdSpawnError { .. })));
 
-        let mut badutf8 = execute("sh", &["-c", "printf \"\\x0\\x9F\" >&2; exit 1"]);
+        let mut badutf8 = execute("sh", &["-c", "printf \"\\000\\237\" 1>&2 && exit 1"]);
         assert!(matches!(badutf8, Err(VcsError::ShellCmdUtf8Error { .. })));
 
-        badutf8 = execute("sh", &["-c", "printf \"\\x0\\x9F\"; exit 0"]);
+        badutf8 = execute("sh", &["-c", "printf \"\\000\\237\" && exit 0"]);
         assert!(matches!(badutf8, Err(VcsError::ShellCmdUtf8Error { .. })));
 
         let cmdfail = execute("ls", &["--bad-option"]);
