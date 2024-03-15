@@ -1,0 +1,50 @@
+# SPDX-FileCopyrightText: 2024 Jason Pena <jasonpena@awkless.com>
+# SPDX-License-Identifier: MIT
+
+name: ADM Quality Check Gauntlet
+
+on: [push, pull_request]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: full
+
+jobs:
+  build:
+    name: "${{ matrix.config.name }}"
+    runs-on: "${{ matrix.config.os }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain:
+          - stable
+          - beta
+          - nightly
+        config:
+          - {
+              name: "Ubuntu Latest",
+              os: ubuntu-latest,
+              artifact: "adm_linux_checks_${{github.sha}}.tar.xz",
+            }
+          - {
+              name: "MacOS Latest",
+              os: macos-latest,
+              artifact: "adm_macos_checks_${{github.sha}}.tar.xz",
+            }
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Rust
+        run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+
+      - name: Build ADM
+        run: cargo build --verbose
+
+      - name: Test ADM
+        run: cargo test --verbose
+
+      - name: Upload ADM Build
+        uses: actions/upload-artifact@v3
+        with:
+          path: ./${{ matrix.config.artifact }}
+          name: "${{ matrix.config.artifact }}"
