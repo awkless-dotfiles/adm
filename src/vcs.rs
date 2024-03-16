@@ -169,7 +169,7 @@ mod tests {
         let badrmt = Git::new(
             "https://unknown/url/to/nonexistant/git/repo.git",
             Path::new("./src"),
-            Path::new("./src")
+            Path::new("./src"),
         );
         assert!(matches!(badrmt, Err(VcsError::ShellCmdError { .. })));
 
