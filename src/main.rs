@@ -1,10 +1,10 @@
 // SPDX-FileCopyrightText: 2024 Jason Pena <jasonpena@awkless.com>
 // SPDX-License-Identifier: MIT
 
-use std::path::Path;
-use log::{LevelFilter, error, info};
-use env_logger::Builder;
 use adm::vcs::Git;
+use env_logger::Builder;
+use log::{error, info, LevelFilter};
+use std::path::Path;
 
 /// Start of execution.
 ///
@@ -30,7 +30,7 @@ fn main() {
         Err(error) => {
             error!("{}", error);
             return;
-        },
+        }
     };
 
     let gitout = match gitcmd.execute(&["status"]) {
@@ -38,9 +38,9 @@ fn main() {
         Err(error) => {
             error!("{}", error);
             return;
-        },
+        }
     };
 
     info!("{}", gitout);
-    return
+    return;
 }
