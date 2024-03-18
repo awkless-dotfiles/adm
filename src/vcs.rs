@@ -138,7 +138,7 @@ impl Git {
     ///
     /// # Since
     ///
-    /// 0.2.0
+    /// 0.2.1
     pub fn execute(&self, cmd: &[&str]) -> Result<String, VcsError> {
         let git_dir = format!("{}={}", "--git-dir", self.git_dir.display());
         let work_dir = format!("{}={}", "--work-tree", self.work_tree.display());
