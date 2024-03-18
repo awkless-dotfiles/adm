@@ -116,6 +116,38 @@ impl Git {
             work_tree: work_tree.to_path_buf(),
         })
     }
+
+    /// Execute git command.
+    ///
+    /// # Preconditions
+    ///
+    /// 1. Given valid git command with valid arguments.
+    ///
+    /// # Postconditions
+    ///
+    /// 1. Output of git command from standard output.
+    ///
+    /// # Arguments
+    ///
+    /// * `cmd`[in] - Command with arguments.
+    ///
+    /// # Returns
+    ///
+    /// * `Result<String, VcsError>` - String containing output of git command on success, or
+    /// VcsError for failure.
+    ///
+    /// # Since
+    ///
+    /// 0.2.0
+    pub fn execute(&self, cmd: &[&str]) -> Result<String, VcsError> {
+        let git_dir = format!("{}={}", "--git-dir", self.git_dir.display());
+        let work_dir = format!("{}={}", "--work-tree", self.work_tree.display());
+        let local_repo = &[git_dir.as_str(), work_dir.as_str()];
+        let fullcmd = &[&local_repo[..], &cmd[..]].concat();
+
+        let gitout = execute("git", fullcmd)?;
+        Ok(gitout)
+    }
 }
 
 #[cfg(test)]
