@@ -31,7 +31,7 @@ use std::process::Command;
 ///
 /// 0.2.0
 fn execute(cmd: &str, args: &[&str]) -> Result<String, VcsError> {
-    let fullcmd: String = format!("{} {}", cmd, args.join(" ")).into();
+    let fullcmd: String = format!("{} {}", cmd, args.join(" "));
     debug!("Execute {}", fullcmd);
 
     let output = Command::new(cmd)
@@ -143,7 +143,7 @@ impl Git {
         let git_dir = format!("{}={}", "--git-dir", self.git_dir.display());
         let work_dir = format!("{}={}", "--work-tree", self.work_tree.display());
         let local_repo = &[git_dir.as_str(), work_dir.as_str()];
-        let fullcmd = &[&local_repo[..], &cmd[..]].concat();
+        let fullcmd = &[&local_repo[..], cmd].concat();
 
         let gitout = execute("git", fullcmd)?;
         Ok(gitout)
