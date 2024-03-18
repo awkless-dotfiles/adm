@@ -21,7 +21,7 @@ use std::path::Path;
 ///
 /// # Since
 ///
-/// 0.2.0
+/// 0.2.1
 fn setup() -> Git {
     let gitcmd = match Git::new(
         "https://github.com/awkless-dotfiles/adm.git",
@@ -87,7 +87,7 @@ fn test_git_new() {
 ///
 /// # Since
 ///
-/// 0.2.0
+/// 0.2.1
 #[test]
 fn test_git_execute() {
     let git = setup();
