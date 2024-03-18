@@ -77,3 +77,24 @@ fn test_git_new() {
     );
     assert!(matches!(good_git, Ok(Git { .. })));
 }
+
+/// Test `Git::execute()` method.
+///
+/// # Expectations
+///
+/// 1. Get `VcsError::ShellCmdError` for bad Git command.
+/// 2. No errors for correct Git command.
+///
+/// # Since
+///
+/// 0.2.0
+#[test]
+fn test_git_execute() {
+    let git = setup();
+
+    let badcmd = git.execute(&["deadbeef", "--not-gonna-work"]);
+    assert!(matches!(badcmd, Err(VcsError::ShellCmdError { .. })));
+
+    let goodcmd = git.execute(&["status"]);
+    assert!(matches!(goodcmd, Ok(String { .. })));
+}
