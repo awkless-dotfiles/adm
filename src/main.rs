@@ -25,7 +25,7 @@ fn main() {
     let remote = "git@github.com:awkless-dotfiles/adm.git";
     let git_dir = Path::new("./.git/");
     let work_dir = Path::new("./");
-    let gitcmd = match Git::new(remote, &git_dir, &work_dir) {
+    let gitcmd = match Git::new(remote, git_dir, work_dir) {
         Ok(git) => git,
         Err(error) => {
             error!("{}", error);
@@ -42,5 +42,4 @@ fn main() {
     };
 
     info!("{}", gitout);
-    return;
 }
