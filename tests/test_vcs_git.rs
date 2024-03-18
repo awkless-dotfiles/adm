@@ -5,6 +5,36 @@ use adm::error::VcsError;
 use adm::vcs::Git;
 use std::path::Path;
 
+/// Setup Git instance for testing.
+///
+/// # Preconditions
+///
+/// None.
+///
+/// # Postconditions
+///
+/// 1. Valid `adm::vcs::Git` instance to use for testing.
+///
+/// # Returns
+///
+/// * `Git` - Valid `adm::vcs::Git` instance.
+///
+/// # Since
+///
+/// 0.2.0
+fn setup() -> Git {
+    let gitcmd = match Git::new(
+        "https://github.com/awkless-dotfiles/adm.git",
+        Path::new("./.git/"),
+        Path::new("./"),
+    ) {
+        Ok(git) => git,
+        Err(error) => panic!("{}", error),
+    };
+
+    gitcmd
+}
+
 /// Test `Git::new()` method.
 ///
 /// # Expectations
